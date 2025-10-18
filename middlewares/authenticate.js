@@ -28,6 +28,7 @@ exports.auth=(req,res,next)=>{
             const payload=jwt.verify(token,process.env.JWT_SECRET);//returns a decoded object
             console.log(payload);
 
+            //req.user is not built-in, but your middleware creates it dynamically.
             req.user=payload;//store payload in request
         }catch(error){
              return res.status(401).json({
